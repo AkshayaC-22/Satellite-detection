@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Satellite Nexus - Advanced Change Detection</title>
+    <link rel="stylesheet" href="../src/styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Orbitron:wght@600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        <div class="container">
+            <header>
+                <div class="logo">
+                    <i class="fas fa-satellite logo-icon"></i>
+                    <h1>Satellite Nexus</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#" class="nav-link" data-page="dashboard">Dashboard</a></li>
+                        <li><a href="#" class="nav-link" data-page="analytics">Analytics</a></li>
+                        <li><a href="#" class="nav-link" data-page="upload">Upload</a></li>
+                        <li><a href="#" class="nav-link" data-page="login" id="auth-link">Login</a></li>
+                    </ul>
+                </nav>
+            </header>
+            
+            <main id="main-content">
+                <!-- Dashboard content will be loaded here -->
+            </main>
+            
+            <footer>
+                <p>Satellite Nexus &copy; 2023 | Advanced Change Detection in Satellite Imagery</p>
+                <p>Data updated in real-time from multiple satellite sources</p>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Templates -->
+    <template id="dashboard-template">
+        <section class="hero">
+            <h2>Advanced Change Detection in Satellite Imagery</h2>
+            <p>Monitor environmental changes, urban development, and natural phenomena with our advanced AI-powered satellite imagery analysis platform.</p>
+            <a href="#" class="btn" id="analyze-btn">Request Analysis</a>
+        </section>
+        
+        <div class="stats">
+            <div class="stat-card">
+                <i class="fas fa-globe-americas"></i>
+                <h4>Areas Monitored</h4>
+                <p id="areas-count">4,821</p>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-satellite-dish"></i>
+                <h4>Satellites</h4>
+                <p id="satellites-count">24</p>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-chart-line"></i>
+                <h4>Changes Detected</h4>
+                <p id="changes-count">12,493</p>
+            </div>
+        </div>
+        
+        <div class="dashboard">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Before</h3>
+                    <i class="fas fa-image"></i>
+                </div>
+                <div class="image-container">
+                    <img src="https://images.unsplash.com/photo-1540957900348-4d2c2c3215d2?ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=80" alt="Satellite image before changes">
+                    <div class="image-overlay">
+                        <p>Coastal Area - January 2023</p>
+                    </div>
+                </div>
+                <p>Satellite imagery showing the initial state of the monitored area before changes were detected.</p>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h3>After</h3>
+                    <i class="fas fa-image"></i>
+                </div>
+                <div class="image-container">
+                    <img src="https://images.unsplash.com/photo-1531089073319-6d7fec9645f0?ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=80" alt="Satellite image after changes">
+                    <div class="image-overlay">
+                        <p>Coastal Area - June 2023</p>
+                    </div>
+                </div>
+                <p>Same area showing significant coastal erosion and vegetation changes after storm season.</p>
+            </div>
+        </div>
+        
+        <div class="timeline">
+            <div class="timeline-header">
+                <h3>Recent Detections</h3>
+                <i class="fas fa-history"></i>
+            </div>
+            <div class="timeline-content">
+                <div class="timeline-track">
+                    <div class="timeline-item">
+                        <div class="date">2023-06-15</div>
+                        <p>Deforestation detected in Amazon region</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="date">2023-06-12</div>
+                        <p>Urban expansion in Southeast Asia</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="date">2023-06-10</div>
+                        <p>Glacial retreat in Himalayas</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="date">2023-06-05</div>
+                        <p>Coastal erosion in Northern Europe</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="date">2023-06-01</div>
+                        <p>Wildfire recovery in California</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="login-template">
+        <div class="auth-container">
+            <div class="auth-card">
+                <h2>Login to Satellite Nexus</h2>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <button type="submit" class="btn">Login</button>
+                </form>
+                <p>Don't have an account? <a href="#" id="register-link">Register here</a></p>
+            </div>
+        </div>
+    </template>
+
+    <template id="register-template">
+        <div class="auth-container">
+            <div class="auth-card">
+                <h2>Create an Account</h2>
+                <form id="register-form">
+                    <div class="form-group">
+                        <label for="reg-username">Username</label>
+                        <input type="text" id="reg-username" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reg-email">Email</label>
+                        <input type="email" id="reg-email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reg-password">Password</label>
+                        <input type="password" id="reg-password" name="password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reg-confirm-password">Confirm Password</label>
+                        <input type="password" id="reg-confirm-password" name="confirmPassword" required>
+                    </div>
+                    <button type="submit" class="btn">Register</button>
+                </form>
+                <p>Already have an account? <a href="#" id="login-link">Login here</a></p>
+            </div>
+        </div>
+    </template>
+
+    <template id="upload-template">
+        <div class="upload-container">
+            <h2>Upload Satellite Imagery</h2>
+            <form id="upload-form">
+                <div class="form-group">
+                    <label for="image-title">Image Title</label>
+                    <input type="text" id="image-title" name="title" required>
+                </div>
+                <div class="form-group">
+                    <label for="image-description">Description</label>
+                    <textarea id="image-description" name="description"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="image-file">Image File</label>
+                    <input type="file" id="image-file" name="image" accept="image/*" required>
+                </div>
+                <div class="form-group">
+                    <label for="image-lat">Latitude</label>
+                    <input type="number" id="image-lat" name="lat" step="any" required>
+                </div>
+                <div class="form-group">
+                    <label for="image-lng">Longitude</label>
+                    <input type="number" id="image-lng" name="lng" step="any" required>
+                </div>
+                <div class="form-group">
+                    <label for="image-date">Date Taken</label>
+                    <input type="date" id="image-date" name="dateTaken" required>
+                </div>
+                <div class="form-group">
+                    <label for="image-tags">Tags (comma separated)</label>
+                    <input type="text" id="image-tags" name="tags">
+                </div>
+                <button type="submit" class="btn">Upload Image</button>
+            </form>
+        </div>
+    </template>
+
+    <script>
+        // Simple JavaScript to handle page navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load dashboard by default
+            loadPage('dashboard');
+            
+            // Set up navigation
+            document.addEventListener('click', function(e) {
+                if (e.target.matches('.nav-link')) {
+                    e.preventDefault();
+                    const page = e.target.dataset.page;
+                    loadPage(page);
+                }
+                
+                if (e.target.matches('#register-link')) {
+                    e.preventDefault();
+                    loadPage('register');
+                }
+                
+                if (e.target.matches('#login-link')) {
+                    e.preventDefault();
+                    loadPage('login');
+                }
+            });
+            
+            // Handle form submissions
+            document.addEventListener('submit', function(e) {
+                if (e.target.matches('#login-form')) {
+                    e.preventDefault();
+                    alert('Login functionality will be implemented with backend');
+                }
+                
+                if (e.target.matches('#register-form')) {
+                    e.preventDefault();
+                    alert('Registration functionality will be implemented with backend');
+                }
+                
+                if (e.target.matches('#upload-form')) {
+                    e.preventDefault();
+                    alert('Image upload functionality will be implemented with backend');
+                }
+            });
+            
+            // Handle analyze button
+            document.addEventListener('click', function(e) {
+                if (e.target.matches('#analyze-btn')) {
+                    e.preventDefault();
+                    loadPage('upload');
+                }
+            });
+            
+            // Simulate live data updates
+            setInterval(() => {
+                const changesCount = document.getElementById('changes-count');
+                if (changesCount) {
+                    let currentCount = parseInt(changesCount.textContent.replace(/,/g, ''));
+                    changesCount.textContent = (currentCount + Math.floor(Math.random() * 5)).toLocaleString();
+                }
+            }, 5000);
+        });
+        
+        function loadPage(page) {
+            const template = document.getElementById(`${page}-template`);
+            if (!template) {
+                console.error(`Template not found for page: ${page}`);
+                return;
+            }
+            
+            const mainContent = document.getElementById('main-content');
+            mainContent.innerHTML = template.innerHTML;
+            
+            // Update active navigation
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            const activeLink = document.querySelector(`.nav-link[data-page="${page}"]`);
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+        }
+    </script>
+    <script type="module" src="../src/js/api.js"></script>
+    <script type="module" src="../src/js/auth.js"></script>
+    <script type="module" src="../src/js/app.js"></script>
+</body>
+</html>

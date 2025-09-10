@@ -1,0 +1,13 @@
+{
+  "name": "satellite-frontend",
+  "version": "1.0.0",
+  "description": "Frontend for Satellite Imagery Change Detection",
+  "main": "index.html",
+  "scripts": {
+    "start": "live-server --port=3000 --open=/public/index.html",
+    "build": "echo 'No build process needed for this simple setup'"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}
